@@ -1,0 +1,32 @@
+Starting HTML-LM vector extraction for raw and cleaned HTML...
+Loading dataset from curlie_cs.jsonl.gz...
+Loaded 11116 pages.
+Loading Seznam/html-lm model and processor to CUDA...
+A new version of the following files was downloaded from https://huggingface.co/Seznam/html-lm:
+- processor.py
+. Make sure to double-check they do not contain any added malicious code. To avoid downloading new versions of the code file, you can pin a revision.
+
+--- Processing: vectors_raw ---
+Tokenizing HTML texts...
+Pages fitting into 4096 tokens: 10155 / 11116 (91.35%)
+Pages truncated at 4096 tokens: 961 / 11116 (8.65%)
+Extracting vectors using HTML-LM on GPU...
+You're using a BertTokenizerFast tokenizer. Please note that with a fast tokenizer, using the `__call__` method is faster than using a method to encode the text followed by a call to the `pad` method to get a padded encoding.
+Final NaN vectors check: 0 / 11116
+Vectors successfully saved to vectors_raw.npz with shape (11116, 768)
+Extraction time for vectors_raw: 462.93 s (7.72 min)
+
+Cleaning HTML tags (nav, header, footer, aside, form, etc.)...
+HTML cleaning preprocessing time: 313.48 s
+
+--- Processing: vectors_clean ---
+Tokenizing HTML texts...
+Pages fitting into 4096 tokens: 10522 / 11116 (94.66%)
+Pages truncated at 4096 tokens: 594 / 11116 (5.34%)
+Extracting vectors using HTML-LM on GPU...
+WARNING: NaN detected in bfloat16 at batch 10464! Switching to float32 for safety...
+Final NaN vectors check: 2 / 11116
+Vectors successfully saved to vectors_clean.npz with shape (11116, 768)
+Extraction time for vectors_clean: 373.54 s (6.23 min)
+
+Total script execution time: 1177.10 s (19.62 min)
